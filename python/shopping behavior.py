@@ -1,8 +1,7 @@
 
-# ============================================================
 # CUSTOMER SHOPPING BEHAVIOR ANALYSIS
 # Data Cleaning, Feature Engineering, Business Analysis & ETL
-# ============================================================
+
 
 import logging
 import os
@@ -11,10 +10,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-
-# ============================================================
 # PROJECT PATHS
-# ============================================================
 
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data"
@@ -42,9 +38,7 @@ CATEGORY_SUMMARY_FILE = OUTPUT_DIR / "category_analysis.csv"
 AGE_GROUP_SUMMARY_FILE = OUTPUT_DIR / "age_group_analysis.csv"
 
 
-# ============================================================
 # LOGGING
-# ============================================================
 
 logging.basicConfig(
     filename=LOG_DIR / "customer_shopping_behavior.log",
@@ -57,9 +51,7 @@ logging.basicConfig(
 logging.info("Starting Customer Shopping Behavior ETL pipeline.")
 
 
-# ============================================================
 # LOAD DATA
-# ============================================================
 
 if INPUT_FILE is None:
     error_message = (
@@ -89,9 +81,7 @@ logging.info(
 )
 
 
-# ============================================================
 # INITIAL DATA EXPLORATION
-# ============================================================
 
 print("\nFirst Five Rows:")
 print(df.head())
@@ -109,9 +99,7 @@ print("\nMissing Values Before Cleaning:")
 print(df.isnull().sum())
 
 
-# ============================================================
 # STANDARDIZE COLUMN NAMES
-# ============================================================
 
 df.columns = (
     df.columns
@@ -131,9 +119,7 @@ print("\nStandardized Column Names:")
 print(df.columns.tolist())
 
 
-# ============================================================
 # DATA VALIDATION
-# ============================================================
 
 required_columns = [
     "customer_id",
@@ -173,9 +159,7 @@ print(
 )
 
 
-# ============================================================
 # HANDLE MISSING REVIEW RATINGS
-# ============================================================
 
 # Fill missing ratings with the median rating of their category.
 # If a category has no available median, use the overall median.
@@ -208,9 +192,8 @@ print("\nMissing Values After Review Rating Treatment:")
 print(df.isnull().sum())
 
 
-# ============================================================
 # REMOVE DUPLICATE RECORDS
-# ============================================================
+
 
 duplicate_count = df.duplicated().sum()
 
@@ -228,9 +211,8 @@ print("\nDataset Shape After Removing Duplicates:")
 print(df.shape)
 
 
-# ============================================================
 # FEATURE ENGINEERING: AGE GROUP
-# ============================================================
+
 
 age_bins = [0, 25, 35, 50, np.inf]
 
@@ -270,9 +252,7 @@ age_group_summary["percentage_of_records"] = (
 print(age_group_summary)
 
 
-# ============================================================
 # FEATURE ENGINEERING: PURCHASE FREQUENCY
-# ============================================================
 
 # Map each purchase frequency to its approximate number of days.
 # Bi-Weekly and Fortnightly are both represented as 14 days.
@@ -325,9 +305,7 @@ else:
     )
 
 
-# ============================================================
 # CHECK DISCOUNT AND PROMO CODE FIELDS
-# ============================================================
 
 print("\nDiscount and Promo Code Comparison:")
 print(df[["discount_applied", "promo_code_used"]].head(10))
@@ -354,9 +332,7 @@ else:
     )
 
 
-# ============================================================
 # BUSINESS ANALYSIS: CATEGORY PERFORMANCE
-# ============================================================
 
 category_summary = (
     df.groupby("category", dropna=False)
