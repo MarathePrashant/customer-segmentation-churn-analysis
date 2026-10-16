@@ -1,339 +1,248 @@
+
 # 🛍️ Customer Shopping Behavior & Segmentation Analysis
 
-> **End-to-end customer analytics project using PostgreSQL, SQL, Python, Pandas, and Power BI to analyze purchasing behavior, customer segments, subscription engagement, discount sensitivity, and revenue opportunities.**
+> An end-to-end customer analytics project using **Python, Pandas, SQL, and Power BI** to explore purchasing patterns, customer demographics, product performance, subscription behavior, discount usage, and customer satisfaction.
 
-## 📌 Business Problem
+## 📌 Project Overview
 
-Understanding customer behavior is critical for improving retention, increasing repeat purchases, and designing more effective marketing strategies.
+Understanding customer shopping behavior helps businesses evaluate product performance, identify customer segments, and make more informed marketing and merchandising decisions.
 
-This project analyzes **3,900 customer transactions** to answer key business questions around:
+This project analyzes a dataset containing **3,900 customer records** to explore purchasing patterns, customer demographics, product categories, subscription status, promotional discounts, shipping preferences, and review ratings.
 
-* Customer purchasing behavior
-* Customer segmentation
-* Subscription adoption
-* Discount sensitivity
-* Product preferences
-* Purchase frequency
-* Customer engagement
-* Revenue trends
+The project combines Python-based data preparation, SQL business analysis, and Power BI visualization to demonstrate an end-to-end analytics workflow.
 
----
+## 🎯 Business Objectives
 
-## 🎯 Project Objectives
-
-The analysis focuses on five major areas:
-
-1. **Customer Behavior** — understand purchasing patterns and engagement.
-2. **Customer Segmentation** — identify meaningful customer groups based on behavior.
-3. **Retention Analysis** — identify opportunities to increase repeat purchases.
-4. **Promotion Analysis** — evaluate discount and promotional-code behavior.
-5. **Business Intelligence** — transform customer data into actionable insights using Power BI.
-
----
+- Analyze purchase amounts across customer demographics and product categories.
+- Explore customer segments using age groups and purchasing attributes.
+- Evaluate subscription status and shopping behavior.
+- Investigate discount usage and promotional patterns.
+- Compare product ratings and category-level performance.
+- Analyze purchasing frequency, payment methods, seasons, and shipping preferences.
+- Develop business-focused KPIs and interactive Power BI visualizations.
 
 ## 📊 Project Snapshot
 
-| Metric                |                Value |
-| --------------------- | -------------------: |
-| Customer Transactions |            **3,900** |
-| Primary Database      |       **PostgreSQL** |
-| Programming           |           **Python** |
-| BI Platform           |         **Power BI** |
-| SQL                   | **PostgreSQL / SQL** |
-| Data Analysis         |           **Pandas** |
+| Metric | Result |
+|---|---:|
+| Customer records | 3,900 |
+| Unique customer IDs | 3,900 |
+| Total recorded purchase amount | $233,081 |
+| Average purchase amount | $59.76 |
+| Average review rating | 3.75 / 5 |
+| Missing review ratings handled | 37 |
+| Exact duplicate records removed | 0 |
 
----
+*These figures are based on the Python analysis. Purchase amounts represent the supplied dataset and should not automatically be interpreted as a retailer's complete financial revenue.*
 
 ## 🛠️ Tech Stack
 
-| Area                  | Tools                |
-| --------------------- | -------------------- |
-| Database              | PostgreSQL           |
-| Query Language        | SQL                  |
-| Programming           | Python               |
-| Data Analysis         | Pandas               |
-| Visualization         | Matplotlib, Seaborn  |
-| Business Intelligence | Power BI             |
-| Calculations          | DAX                  |
-| Data Preparation      | Pandas / Power Query |
-| Reporting             | Power BI             |
+| Area | Technologies |
+|---|---|
+| Programming | Python |
+| Data Manipulation | Pandas, NumPy |
+| Query Language | SQL |
+| Data Visualization | Matplotlib, Seaborn |
+| Business Intelligence | Microsoft Power BI |
+| Dashboard Calculations | DAX |
+| Data Transformation | Python, Power Query |
+| Analytical Techniques | Exploratory Data Analysis, data quality checks, customer segmentation, KPI analysis |
 
----
-
-## 🔄 End-to-End Analytics Workflow
+## 🔄 Analytics Workflow
 
 ```text
-Raw Customer Data
+Raw Customer Dataset
         ↓
-Data Quality Checks
+Data Inspection & Quality Checks
         ↓
-Data Cleaning & Transformation
+Data Cleaning & Standardization
         ↓
-PostgreSQL / SQL Analysis
+Feature Engineering
         ↓
-Python EDA
+Python-Based Exploratory Analysis
         ↓
-Customer Segmentation
+SQL Business Analysis
         ↓
-KPI & Behavioral Analysis
+KPI Development & Data Visualization
         ↓
-Power BI Dashboard
+Interactive Power BI Dashboard
         ↓
-Business Insights
-        ↓
-Retention & Marketing Recommendations
+Business Findings & Recommendations
 ```
 
----
+## 🧹 Data Cleaning & Preparation
 
-## 🧹 Data Preparation
+Python was used to prepare the dataset for analysis.
 
-The dataset was prepared for analysis by:
+Key data preparation steps included:
 
-* Standardizing categorical variables
-* Handling inconsistent customer attributes
-* Preparing purchasing-frequency fields
-* Validating customer and transaction data
-* Creating analysis-ready fields
-* Preparing cleaned data for SQL, Python, and Power BI
+- Loading and inspecting the source CSV file.
+- Standardizing column names for consistent analysis.
+- Validating the required columns.
+- Handling missing review ratings using category-level medians, with an overall median fallback.
+- Checking for and removing exact duplicate records.
+- Creating age groups for demographic analysis.
+- Mapping purchasing-frequency labels to numerical day values.
+- Checking whether discount-related columns contained redundant information.
+- Exporting cleaned data and analytical summaries for downstream use.
+- Creating log files to support execution monitoring and troubleshooting.
 
----
+### Data Quality Results
 
-## 🔎 Key Business Questions
+| Check | Result |
+|---|---|
+| Initial records | 3,900 |
+| Missing review ratings handled | 37 |
+| Exact duplicate records removed | 0 |
+| Final records | 3,900 |
+| Final columns | 19 |
+| Missing values in final cleaned dataset | 0 |
 
-### Customer Behavior
+## 🔎 SQL Business Analysis
 
-* Which customer groups purchase most frequently?
-* Which categories generate stronger repeat-purchase behavior?
-* How does customer engagement vary across segments?
+The SQL analysis script explores business questions using aggregations, conditional logic, subqueries, and window functions.
 
-### Subscription Analysis
+Key analytical areas include:
 
-* Do subscribers demonstrate stronger purchasing behavior?
-* Which non-subscribed customers represent good subscription-conversion opportunities?
+- Purchase amount comparisons by gender.
+- Discounted purchases compared with the overall average.
+- Product rating analysis with minimum observation thresholds.
+- Spending comparisons by shipping type.
+- Subscription status and purchase behavior.
+- Discount application rates by product.
+- Customer classification using purchasing attributes.
+- Top-ranked products within categories.
+- Purchasing frequency and subscription comparisons.
+- Purchase amount by age group and product category.
+- Seasonal purchasing patterns.
+- Payment method preferences.
+- Category-level customer ratings.
+- Comparisons involving subscription and discount usage.
 
-### Promotion Analysis
+**Implementation note:** SQL analysis is maintained as a project script. A PostgreSQL database connection or production database pipeline is not claimed as completed.
 
-* Which customers are more dependent on discounts?
-* Does promotional usage vary across customer segments?
+## 🐍 Python Exploratory Data Analysis
 
-### Product Analysis
+Python and Pandas support data preparation, summary statistics, and category-level analysis.
 
-* Which product categories demonstrate stronger repeat-purchase behavior?
-* Which categories have opportunities for improved customer retention?
+### Purchase Amount by Product Category
 
----
+| Product Category | Records | Total Purchase Amount | Average Purchase Amount |
+|---|---:|---:|---:|
+| Clothing | 1,737 | $104,264 | $60.03 |
+| Accessories | 1,240 | $74,200 | $59.84 |
+| Footwear | 599 | $36,093 | $60.26 |
+| Outerwear | 324 | $18,524 | $57.17 |
 
-## 📈 Key Business Insights
+These results describe the supplied dataset. They do not, on their own, establish profitability, customer retention, or repeat-purchase performance.
 
-### 1. Subscription Engagement
+### Customer Age-Group Distribution
 
-Subscribers demonstrated higher purchasing engagement and spending compared with non-subscribed customers.
+| Age Group | Customer Records | Share |
+|---|---:|---:|
+| Young Adult | 486 | 12.46% |
+| Adult | 755 | 19.36% |
+| Middle Age | 1,100 | 28.21% |
+| Senior | 1,559 | 39.97% |
 
-**Business implication:**
-Membership programs can be used as a retention and repeat-purchase lever.
-
-### 2. Discount Sensitivity
-
-Non-subscribed customers showed greater reliance on promotional discounts.
-
-**Business implication:**
-Customer retention strategies should distinguish between genuinely loyal customers and customers whose purchases are primarily promotion-driven.
-
-### 3. Category Repeat Behavior
-
-Clothing and Footwear demonstrated stronger repeat-purchase behavior, while Accessories showed comparatively lower repeat activity after the initial purchase.
-
-**Business implication:**
-Category-specific retention campaigns can be more effective than applying a single strategy across the entire customer base.
-
-### 4. Customer Engagement Signals
-
-Purchase frequency, subscription status, review behavior, and promotional usage provide useful signals for differentiating customer groups.
-
-**Business implication:**
-These behavioral attributes can support more targeted CRM and retention strategies.
-
----
-
-## 💡 Business Recommendations
-
-### 🔹 1. Increase Subscription Conversion
-
-Target frequent non-subscribed customers with:
-
-* Membership trials
-* Introductory benefits
-* Free shipping incentives
-* Member-only offers
-
-### 🔹 2. Build Customer Lifecycle Campaigns
-
-Use purchase history to trigger:
-
-* Post-purchase communication
-* Product recommendations
-* Re-engagement campaigns
-* Cross-sell opportunities
-
-### 🔹 3. Optimize Loyalty Programs
-
-Combine:
-
-* Loyalty points
-* Personalized rewards
-* Member benefits
-* Targeted offers
-
-rather than relying exclusively on discounts.
-
-### 🔹 4. Use Segment-Based Marketing
-
-Develop different campaigns according to:
-
-* Purchase frequency
-* Product preference
-* Subscription status
-* Discount sensitivity
-* Customer engagement
-
-### 🔹 5. Protect Margins
-
-Avoid blanket discounting. Prioritize targeted incentives for customers where the expected retention or repeat-purchase value justifies the promotional cost.
-
----
-
-## 🧮 SQL Analysis
-
-PostgreSQL / SQL was used to support customer and behavioral analysis, including:
-
-* Customer-level aggregations
-* Purchasing behavior analysis
-* Category comparisons
-* Subscription analysis
-* Discount analysis
-* Customer segmentation
-* Revenue analysis
-
----
-
-## 🐍 Python Analysis
-
-Python was used for:
-
-* Data cleaning
-* Exploratory data analysis
-* Customer behavior analysis
-* Segmentation analysis
-* Statistical exploration
-* Data visualization
-
-Key libraries:
-
-```text
-Pandas
-Matplotlib
-Seaborn
-```
-
----
+The age groups provide a basis for comparing purchasing attributes across demographic segments.
 
 ## 📊 Power BI Dashboard
 
-The Power BI solution provides an interactive view of:
+The Power BI dashboard is designed to present customer and product metrics through interactive visualizations.
 
-* Customer KPIs
-* Purchasing behavior
-* Customer segments
-* Subscription behavior
-* Discount usage
-* Product/category performance
-* Revenue trends
+### Planned Dashboard Components
 
-**Power BI file:** `Customer_Behaviour_Dashboard.pbix`
+- **KPI Cards:** Total recorded purchase amount, customer records, average purchase amount, and average review rating.
+- **Category Analysis:** Purchase amount by product category.
+- **Customer Demographics:** Customer distribution by age group.
+- **Subscription Analysis:** Comparison of subscriber and non-subscriber purchasing metrics.
+- **Discount Analysis:** Discount usage and category-level comparisons.
+- **Product Performance:** Product ratings and purchasing metrics.
+- **Interactive Slicers:** Gender, product category, season, and subscription status.
 
----
+Dashboard descriptions and filenames should be updated to reflect the visuals and Power BI file actually committed to the repository.
+
+## 💡 Business Questions & Recommendations
+
+The analysis provides a foundation for investigating questions such as:
+
+- Which product categories account for the largest share of recorded purchase amounts?
+- How do average purchase amounts vary across demographic groups?
+- How do subscriber and non-subscriber purchasing patterns compare?
+- How does discount usage vary across categories and customer segments?
+- Which products have stronger customer ratings?
+- How do shipping preferences and purchasing patterns differ?
+
+### Potential Business Recommendations
+
+The following are analytical opportunities, not assumed findings:
+
+1. **Subscription Growth:** Compare subscriber and non-subscriber behavior before designing conversion campaigns.
+2. **Targeted Promotions:** Evaluate discount usage alongside purchase amounts and, where available, margin data before allocating promotional budgets.
+3. **Customer Segmentation:** Use validated demographic and purchasing attributes to develop relevant customer groups.
+4. **Product Strategy:** Combine purchase amounts, product ratings, and category performance to identify areas for further investigation.
+5. **Customer Retention:** Analyze longitudinal purchase history or suitable repeat-purchase indicators before recommending retention interventions.
+
+Recommendations should be supported by validated results and the limitations of the available dataset.
 
 ## 📁 Project Structure
 
+The following is an example structure. Keep it synchronized with the actual files and folders in your GitHub repository.
+
 ```text
-customer-segmentation-churn-analysis/
-│
+customer_shopping_behavior/
 ├── data/
-│   ├── customer_shopping_behavior.csv
-│   └── customer_shopping_behavior_cleaned.csv
-│
-├── sql/
-│   └── Customer_behaviour.sql
-│
-├── python/
-│   └── shopping_behavior.py
-│
-├── powerbi/
-│   └── Customer_Behaviour_Dashboard.pbix
-│
-├── reports/
-│   ├── Business_Problem_Document.pdf
-│   ├── Customer_Shopping_Behavior_Analysis.pdf
-│   └── Customer-Shopping-Behavior-Analysis.pptx
-│
-├── screenshots/
-│   └── dashboard-overview.png
-│
-├── requirements.txt
+│   └── customer_shopping_behavior.csv
+├── outputs/
+│   ├── customer_shopping_behavior_cleaned.csv
+│   ├── data_quality_report.csv
+│   ├── category_analysis.csv
+│   └── age_group_analysis.csv
+├── logs/
+│   └── customer_shopping_behavior.log
+├── shopping behavior.py
+├── customer_shopping_behavior.sql
+├── Customer_Shopping_Behavior_Analytics.pbix
 └── README.md
 ```
 
-> **Important:** Create these folders and move the existing files before using this structure. Keep the README synchronized with the actual repository.
-
----
+Do not list files that are not present in the repository. If you organize the project into separate `python/`, `sql/`, `powerbi/`, and `reports/` directories, update this section to match the final structure.
 
 ## 🧠 Skills Demonstrated
 
-* PostgreSQL
-* SQL
-* Python
-* Pandas
-* Exploratory Data Analysis
-* Customer Segmentation
-* Customer Behavior Analytics
-* Retention Analytics
-* Subscription Analytics
-* Discount Analysis
-* Revenue Analysis
-* Power BI
-* DAX
-* Data Visualization
-* Business Intelligence
-* Business Recommendations
-
----
+- Python programming and data manipulation
+- Pandas and NumPy
+- Data cleaning and quality validation
+- Missing-value treatment and duplicate checks
+- Feature engineering
+- Exploratory Data Analysis (EDA)
+- SQL aggregations, subqueries, and window functions
+- Customer and product analytics
+- KPI development and business reporting
+- Power BI and DAX
+- Data visualization
+- Analytical reasoning and business recommendations
 
 ## 🚀 Business Value
 
-This project demonstrates how customer transaction data can be transformed into actionable insights for:
+This project demonstrates how raw customer data can be transformed into structured analytical outputs and business-focused reporting.
 
-* Customer retention
-* Subscription growth
-* Repeat-purchase optimization
-* Targeted marketing
-* Product strategy
-* Promotional optimization
-* Customer lifetime-value improvement
-
----
+It showcases an analytics workflow covering data quality, feature engineering, SQL-based business questions, exploratory analysis, and dashboard development. The results can help stakeholders investigate purchasing patterns, compare customer groups, and identify areas for further analysis.
 
 ## 👤 Author
 
 **Prashant Marathe**
 
-B.Tech — Artificial Intelligence & Data Science
+B.Tech — Artificial Intelligence & Data Science, 2026
 
-**Target Roles:** Data Analyst | BI Analyst | Business Analyst
+**Target Roles:** Data Analyst | BI Analyst | Business Analyst | Junior SQL Developer
 
 📍 Pune, Maharashtra, India
 
-* [LinkedIn](https://www.linkedin.com/in/prashantmarathe17)
-* [Portfolio](https://prashant-marathe.framer.website/)
+- **GitHub:** [MarathePrashant](https://github.com/MarathePrashant)
+- **LinkedIn:** [Prashant Marathe](https://www.linkedin.com/in/prashantmarathe17)
+- **Portfolio:** [View Portfolio](https://prashant-marathe.framer.website/)
+
 * [GitHub](https://github.com/MarathePrashant)
 * Email: [p04747391@gmail.com](mailto:p04747391@gmail.com)
