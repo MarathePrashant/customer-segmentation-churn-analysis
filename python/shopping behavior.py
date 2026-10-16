@@ -213,7 +213,6 @@ print(df.shape)
 
 # FEATURE ENGINEERING: AGE GROUP
 
-
 age_bins = [0, 25, 35, 50, np.inf]
 
 age_labels = [
@@ -331,7 +330,6 @@ else:
         "\nBoth columns were retained because their values differ."
     )
 
-
 # BUSINESS ANALYSIS: CATEGORY PERFORMANCE
 
 category_summary = (
@@ -366,10 +364,7 @@ category_summary = category_summary.sort_values(
 print("\nCategory-Wise Analysis:")
 print(category_summary)
 
-
-# ============================================================
 # BUSINESS ANALYSIS: OVERALL SHOPPING METRICS
-# ============================================================
 
 total_purchase_amount = df["purchase_amount"].sum()
 
@@ -387,9 +382,7 @@ print(f"Average purchase amount: ${average_purchase_amount:,.2f}")
 print(f"Average review rating: {average_review_rating:.2f} / 5")
 
 
-# ============================================================
 # DATA QUALITY REPORT
-# ============================================================
 
 data_quality_report = pd.DataFrame({
     "column": df.columns,
@@ -424,9 +417,7 @@ print("\nData Quality Report:")
 print(data_quality_report.to_string(index=False))
 
 
-# ============================================================
 # FINAL DATA VALIDATION
-# ============================================================
 
 print("\nFinal Missing Values:")
 print(df.isnull().sum())
@@ -443,9 +434,7 @@ else:
     )
 
 
-# ============================================================
 # EXPORT CLEANED DATA AND REPORTS
-# ============================================================
 
 df.to_csv(CLEANED_FILE, index=False)
 
@@ -476,15 +465,14 @@ logging.info("Category analysis exported to %s", CATEGORY_SUMMARY_FILE)
 logging.info("Age group analysis exported to %s", AGE_GROUP_SUMMARY_FILE)
 
 
-# ============================================================
 # OPTIONAL: LOAD DATA INTO POSTGRESQL
-# ============================================================
+
 
 # Configure these environment variables before enabling loading:
 #
 # LOAD_TO_POSTGRES=true
-# PGHOST=localhost
-# PGPORT=5432
+# PGHOST=loca---------host
+# PGPORT=####
 # PGDATABASE=shopping_behavior
 # PGUSER=postgres
 # PGPASSWORD=your_password
@@ -551,10 +539,7 @@ else:
         "and configure the PG environment variables to enable it."
     )
 
-
-# ============================================================
 # PIPELINE SUMMARY
-# ============================================================
 
 print("\n" + "=" * 60)
 print("CUSTOMER SHOPPING BEHAVIOR ETL PIPELINE COMPLETED")
